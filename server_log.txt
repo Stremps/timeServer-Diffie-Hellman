@@ -1,0 +1,3 @@
+2024-11-25 22:42:55 - (127.0.0.1) Time Sync Request: Local Time (17:27:35) --> Sent Time (22:42:55.610)
+2024-11-25 22:58:12 - (127.0.0.1) Time Sync Request: Local Time (17:15:48) --> Sent Time (22:58:12.921)
+2024-11-25 22:58:39 - (127.0.0.1) Time Sync Request: Local Time (03:43:45) --> Sent Time (22:58:39.015)
