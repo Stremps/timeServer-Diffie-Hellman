@@ -33,14 +33,16 @@ def parse_time_string(time_string):
     """
     return datetime.strptime(time_string, "%H:%M:%S.%f")
 
-def tcp_client(server_address="127.0.0.1", server_port=8082):
+def tcp_client():
     """
     Simulates a TCP client for time synchronization using Diffie-Hellman for encryption.
-
-    :param server_address: The server's IP address.
-    :param server_port: The server's port.
     """
     try:
+        # Prompt user for server IP and port
+        server_address = input("Enter the server IP address (default: 127.0.0.1): ").strip() or "127.0.0.1"
+        server_port = input("Enter the server port (default: 8082): ").strip() or "8082"
+        server_port = int(server_port)  # Ensure port is an integer
+
         # Simulate a desynchronized clock
         local_time = simulate_desynchronized_clock()
         print(f"Local (simulated) time before sync: {local_time}")
