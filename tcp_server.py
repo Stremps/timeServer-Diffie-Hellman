@@ -19,6 +19,19 @@ logging.basicConfig(
 PRIME = 23  # A small prime number for demonstration (use a large prime in production)
 BASE = 5    # A base number for the calculation (common choice is 2 or 5)
 
+def get_local_ip():
+    """
+    Automatically retrieves the local IP address of the machine.
+    """
+    try:
+        # Connect to a public IP (e.g., Google's DNS) to get the local IP
+        with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as s:
+            s.connect(("8.8.8.8", 80))  # Doesn't actually send data
+            return s.getsockname()[0]
+    except Exception as e:
+        print(f"Could not determine local IP: {e}")
+        return "127.0.0.1"  # Fallback to localhost
+
 def generate_shared_key(private_key, client_public_key):
     """
     Generate the shared secret key using the private key and the client's public key.
@@ -82,7 +95,7 @@ def handle_client(client_socket, client_address):
         print(f"Connection closed: {client_address}")
 
 # Main server loop
-def start_server(host='127.0.0.1', port=8082):
+def start_server(host=get_local_ip(), port=8082):
     """
     Start the TCP server to handle time synchronization.
 
